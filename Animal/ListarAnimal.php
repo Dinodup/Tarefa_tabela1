@@ -21,7 +21,7 @@
         <a href="CadastroAnimal.html">Cadastrar novo Animal</a><br>
         <a href="../index.html">Voltar para a Tela Inicial</a>
 
-        <table class="animal-table">
+        <table class="n-table">
             <tr>
                 <th>id</th>
                 <th>Nome</th>
@@ -39,7 +39,7 @@
                     $castrado = $row['castrado'] == 1 ? "Sim" : "Não";
                     echo "<tr>";
                     echo "<td>".$row['id']."</td>";
-                    echo "<td>".$row['nome_animal']."</td>";
+                    echo "<td>".$row['nome']."</td>";
                     echo "<td>".$row['especie']."</td>";
                     echo "<td>".$row['raca']."</td>";
                     echo "<td>".$row['data_nascimento']."</td>";

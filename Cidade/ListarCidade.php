@@ -21,7 +21,7 @@
         <a href="CadastroCidade.html">Cadastrar nova Cidade</a><br>
         <a href="../index.html">Voltar para a Tela Inicial</a>
 
-        <table class="city-table">
+        <table class="n-table">
             <tr>
                 <th>id</th>
                 <th>Cidade</th>

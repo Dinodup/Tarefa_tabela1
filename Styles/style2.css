@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Geral */
 body {
     font-family: Arial, sans-serif;
@@ -40,41 +38,41 @@ a:hover {
 }
 
 /* Tabela */
-.pessoa-table {
+.n-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.pessoa-table th,
-.pessoa-table td {
+.n-table th,
+.n-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
 
-.pessoa-table th {
+.n-table th {
     background-color: #003366; /* Azul escuro */
     color: #fff;
 }
 
-.pessoa-table tr:nth-child(even) {
+.n-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.pessoa-table tr:hover {
+.n-table tr:hover {
     background-color: #f7d700; /* Amarelo */
 }
 
 /* Botões de ação */
-.pessoa-table a {
+.n-table a {
     color: #003366; /* Azul escuro */
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
 }
 
-.pessoa-table a:hover {
+.n-table a:hover {
     background-color: #003366; /* Azul escuro */
     color: #fff;
 }

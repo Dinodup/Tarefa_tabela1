@@ -33,7 +33,18 @@
 
             <div>
                 <label for="id_cidade">Id da Cidade: </label>
-                <input type="number" name="id_cidade" id="id_cidade">
+                <select name="id_cidade" id="id_cidade">
+                <?php
+                include('../Includes/conexao.php');
+                $sql = "SELECT * FROM cidade";
+                $result = mysqli_query($con,$sql);
+                while($row = mysqli_fetch_array($result)){
+                    echo "<option value='".$row['id']."'>"
+                         .$row['nome_cidade']."/".$row['estado']
+                         ."</option>";
+                }
+                ?>
+                </select>
             </div><p></p>
     
             <div>
