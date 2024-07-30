@@ -24,8 +24,6 @@
         echo "Bairro: $bairro<br>";
         echo "ID da cidade: $id_cidade<br>";
         echo "CEP: $cep<br>";
-        //INSERT INTO cidade (nome, estado)
-        //VALUES ('$nome', '$estado')
 
         $sql = "INSERT INTO pessoa (nome, email, endereco, bairro, id_cidade, cep)";
         $sql .= " VALUES('".$nome."','".$email."','".$endereco."','".$bairro."','".$id_cidade."','".$cep."')";
