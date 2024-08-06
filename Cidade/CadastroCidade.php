@@ -5,34 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Styles/style3.css">
+    <link rel="stylesheet" href="../Styles/style1.css">
 </head>
 <body>
-    <?php
-        include('../Includes/conexao.php');
-        $nome_cidade = $_POST['nome_cidade'];
-        $estado = $_POST['estado'];
-        echo "<h1>Dados da cidade</h1>";
-        echo "Nome da cidade: $nome_cidade<br>";
-        echo "Estado: $estado<br>";
-        //INSERT INTO cidade (nome, estado)
-        //VALUES ('$nome', '$estado')
+    <form action="CadastroCidadeExe.php" method="post">
+        <fieldset>
+            <legend>Cadastro de Cidades</legend>
+        <div>
+            <label for="nome_cidade">Nome da cidade: </label>
+            <input type="text" name="nome_cidade" id="nome_cidade">
+        </div>
+<p></p>
+        <div>
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado">
+                <option value="SP">SP</option>
+                <option value="RJ">RJ</option>
+                <option value="MG">MG</option>
+                <option value="CE">CE</option>
+            </select>
+        </div>
 
-        $sql = "INSERT INTO cidade (nome_cidade, estado)";
-        $sql .= " VALUES('".$nome_cidade."','".$estado."')";
-        echo $sql;
-
-        //executa comando no banco de dados
-        $result = mysqli_query($con,$sql);
-        if($result){
-            echo "<h2>Dados cadastrados com sucesso!</h2>";
-        }
-        else{
-            echo "<h2>Erro ao cadastrar</h2>";
-            echo mysqli_error($con);
-        }
-    ?>
-    <h3>Ver na <a href="ListarCidade.php">Tabela</a></h3>
-    <h3><a href="CadastroCidade.html">Voltar</a></h3>
+        <div>
+            <button type="submit">Cadastrar</button>
+        </div>
+    </fieldset>
+    </form>
+    <a href="../index.html">Voltar para a Tela Inicial</a>
 </body>
 </html>

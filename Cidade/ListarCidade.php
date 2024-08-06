@@ -10,15 +10,23 @@
 <body>
     <?php
         include('../Includes/conexao.php');
-        $sql = "SELECT * FROM cidade";
+
+        // Consulta SQL
+        $sql = "SELECT id, nome_cidade, estado
+                FROM cidade";
 
         // Executa a consulta
         $result = mysqli_query($con, $sql);
+
+        // Verificar se a consulta foi bem-sucedida
+        if (!$result) {
+            die('Erro na consulta: ' . mysqli_error($con));
+        }
     ?>
 
     <div class="container">
         <h1>Consulta de Cidades</h1>
-        <a href="CadastroCidade.html">Cadastrar nova Cidade</a><br>
+        <a href="CadastroCidade.php">Cadastrar nova Cidade</a><br>
         <a href="../index.html">Voltar para a Tela Inicial</a>
 
         <table class="n-table">
