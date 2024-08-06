@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-        include('../includes/includes.php');
+        include('../Includes/conexao.php');
 
         // Consulta SQL
         $sql = "SELECT id_cidade, nome_cidade, estado
