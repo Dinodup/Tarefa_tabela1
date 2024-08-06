@@ -8,15 +8,20 @@
     <link rel="stylesheet" href="../Styles/style2.css">
 </head>
 <body>
-    <?php
-        include('../Includes/conexao.php');
-        $sql = "SELECT pes.id, pes.nome nomepessoa, pes.email,
-                cid .nome nome_cidade, cid.estado
-                FROM pessoa pes
-                LEFT JOIN cidade cid on cid.id = cli.id_cidade";
+<?php
+        include('../includes/includes.php');
 
-        // Executa a consulta
+        // Consulta SQL
+        $sql = "SELECT id_cidade, nome_cidade, estado
+                FROM cidade";
+
+        // Executar a consulta
         $result = mysqli_query($con, $sql);
+
+        // Verificar se a consulta foi bem-sucedida
+        if (!$result) {
+            die('Erro na consulta: ' . mysqli_error($con));
+        }
     ?>
 
     <div class="container">
@@ -37,7 +42,7 @@
             <?php //mysqli_fetch_array lê uma linha por vez
                 while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
-                    echo "<td>".$row['id']."</td>";
+                    echo "<td>".$row['id_cidade']."</td>";
                     echo "<td>".$row['nome']."</td>";
                     echo "<td>".$row['email']."</td>";
                     echo "<td>".$row['endereco']."</td>";

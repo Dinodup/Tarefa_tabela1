@@ -4,42 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../Styles/style3.css">
+    <title>Cadastro de Pessoas</title>
+    <link rel="stylesheet" href="../Styles/style1.css">
 </head>
 <body>
-    <?php
-        include('../Includes/conexao.php');
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $endereco = $_POST['endereco'];
-        $bairro = $_POST['bairro'];
-        $id_cidade = $_POST['id_cidade'];
-        $cep = $_POST['cep'];
+    <form action="CadastroPessoaExe.php" method="post">
+        <fieldset>
+            <legend>Cadastro de Pessoas</legend>
+            <div>
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome">
+            </div><p></p>
+    
+            <div>
+                <label for="email">Email: </label>
+                <input type="text" name="email" id="email">
+            </div><p></p>
 
-        echo "<h1>Dados da Pessoa</h1>";
-        echo "Nome: $nome<br>";
-        echo "Email: $email<br>";
-        echo "Endereço: $endereco<br>";
-        echo "Bairro: $bairro<br>";
-        echo "ID da cidade: $id_cidade<br>";
-        echo "CEP: $cep<br>";
+            <div>
+                <label for="endereco">Endereço: </label>
+                <input type="text" name="endereco" id="endereco">
+            </div><p></p>
+    
+            <div>
+                <label for="bairro">Bairro: </label>
+                <input type="text" name="bairro" id="bairro">
+            </div><p></p>
 
-        $sql = "INSERT INTO pessoa (nome, email, endereco, bairro, id_cidade, cep)";
-        $sql .= " VALUES('".$nome."','".$email."','".$endereco."','".$bairro."','".$id_cidade."','".$cep."')";
-        echo $sql;
-
-        //executa comando no banco de dados
-        $result = mysqli_query($con,$sql);
-        if($result){
-            echo "<h2>Dados cadastrados com sucesso!</h2>";
-        }
-        else{
-            echo "<h2>Erro ao cadastrar</h2>";
-            echo mysqli_error($con);
-        }
-    ?>
-    <h3>Ver na <a href="ListarPessoa.php">Tabela</a></h3>
-    <h3><a href="CadastroPessoa.html">Voltar</a></h3>
+            <div>
+                <label for="id_cidade">Id da Cidade: </label>
+                <select name="id_cidade" id="id_cidade">
+                <?php
+                include('../Includes/conexao.php');
+                $sql = "SELECT * FROM cidade";
+                $result = mysqli_query($con,$sql);
+                while($row = mysqli_fetch_array($result)){
+                    echo "<option value='".$row['id']."'>"
+                         .$row['nome_cidade']."/".$row['estado']
+                         ."</option>";
+                }
+                ?>
+                </select>
+            </div><p></p>
+    
+            <div>
+                <label for="cep">CEP: </label>
+                <input type="number" name="cep" id="cep">
+            </div><p></p>
+    
+            <div>
+                <button type="submit">Cadastrar</button>
+            </div>
+        </fieldset>
+    </form>
+    <a href="../index.html">Voltar para a Tela Inicial</a>
 </body>
 </html>
