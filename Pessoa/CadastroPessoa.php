@@ -39,7 +39,7 @@
                 $sql = "SELECT * FROM cidade";
                 $result = mysqli_query($con,$sql);
                 while($row = mysqli_fetch_array($result)){
-                    echo "<option value='".$row['id']."'>"
+                    echo "<br><option value='".$row['id']."'>"
                          .$row['nome_cidade']."/".$row['estado']
                          ."</option>";
                 }

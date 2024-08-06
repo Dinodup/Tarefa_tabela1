@@ -44,8 +44,9 @@ label {
 }
 
 input[type="text"],
-input[type="number"] {
-    width: calc(100% - 160px);
+input[type="number"],
+#data_nascimento {
+    width: calc(100% - 20px);
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -66,6 +67,7 @@ button {
     border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
+    width: calc(100%);
 }
 
 button:hover {
@@ -84,4 +86,11 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+#id, #estado, #id_pessoa{
+    width: calc(100%);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }

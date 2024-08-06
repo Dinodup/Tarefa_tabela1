@@ -50,7 +50,7 @@
                     echo "<td>".$row['bairro']."</td>";
                     echo "<td>".$row['estado']."/".$row['nome_cidade']."</td>";
                     echo "<td>".$row['cep']."</td>";
-                    echo "<td><a href='alteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
+                    echo "<td><a href='../Modificações/alteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
                     echo "<td><a href='deletaPessoa.php?id=".$row['id']."'>Deletar</a></td>";
                     echo "</tr>";
                 }

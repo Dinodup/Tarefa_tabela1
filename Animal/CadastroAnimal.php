@@ -5,43 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Styles/style3.css">
+    <link rel="stylesheet" href="../Styles/style1.css">
 </head>
 <body>
-    <?php
-        include('../Includes/conexao.php');
-        $nome_animal = $_POST['nome_animal'];
-        $especie = $_POST['especie'];
-        $raca = $_POST['raca'];
-        $data_nascimento = $_POST['data_nascimento'];
-        $idade = $_POST['idade'];
-        $castrado = $_POST['castrado'];
-        $id_pessoa = $_POST['id_pessoa'];
+    <form action="CadastroAnimalExe.php" method="post">
+        <fieldset>
+            <legend>Cadastro de Animais</legend>
+            <div>
+                <label for="nome_animal">Nome do animal: </label>
+                <input type="text" name="nome_animal" id="nome_animal">
+            </div><p></p>
+    
+            <div>
+                <label for="especie">Espécie: </label>
+                <input type="text" name="especie" id="especie">
+            </div><p></p>
 
-        echo "<h1>Dados do Animal</h1>";
-        echo "Nome: $nome_animal<br>";
-        echo "Especie: $especie<br>";
-        echo "Raça: $raca<br>";
-        echo "Data do Nascimento: $data_nascimento<br>";
-        echo "Idade: $idade<br>";
-        echo "Situação: $castrado<br>";
-        echo "Id da Pessoa: $id_pessoa<br>";
+            <div>
+                <label for="raca">Raça: </label>
+                <input type="text" name="raca" id="raca">
+            </div><p></p>
+    
+            <div>
+                <label for="data_nascimento">Data do Nasciment: </label>
+                <input type="date" name="data_nascimento" id="data_nascimento">
+            </div><p></p>
 
-        $sql = "INSERT INTO animal (nome, especie, raca, data_nascimento, idade, castrado, id_pessoa)";
-        $sql .= " VALUES('".$nome_animal."','".$especie."','".$raca."','".$data_nascimento."','".$idade."','".$castrado."','".$id_pessoa."')";
-        echo $sql;
+            <div>
+                <label for="idade">Idade: </label>
+                <input type="number" name="idade" id="idade">
+            </div><p></p>
+    
+            <h3>Situação</h3>
+        <div id="castrado">
+            <label for="operacao">Castrado</label>
+            <input type="hidden" name="castrado" id="castrado" value="0">
+            <input type="checkbox" name="castrado" id="castrado" value="1">
+        </div><p></p>
+    
+        <div>
+            <label for="id_pessoa">ID pessoa: </label>
+            <select name="id_pessoa" id="id_pessoa">
+                <?php
+                include('../Includes/conexao.php');
+                $sql = "SELECT * FROM pessoa";
+                $result = mysqli_query($con,$sql);
+                while($row = mysqli_fetch_array($result)){
+                    echo "<option value='".$row['id']."'>"
+                         .$row['nome']
+                         ."</option>";
+                }
+                ?>
+                </select>
+        </div><p></p>
 
-        //executa comando no banco de dados
-        $result = mysqli_query($con,$sql);
-        if($result){
-            echo "<h2>Dados cadastrados com sucesso!</h2>";
-        }
-        else{
-            echo "<h2>Erro ao cadastrar</h2>";
-            echo mysqli_error($con);
-        }
-    ?>
-    <h3>Ver na <a href="ListarAnimal.php">Tabela</a></h3>
-    <h3><a href="CadastroAnimal.html">Voltar</a></h3>
+        <div>
+            <button type="submit">Cadastrar</button>
+        </div>
+    </fieldset>
+    </form>
+    <a href="../index.html">Voltar para a Tela Inicial</a>
 </body>
 </html>

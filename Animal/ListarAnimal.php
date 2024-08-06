@@ -10,7 +10,11 @@
 <body>
     <?php
         include('../Includes/conexao.php');
-        $sql = "SELECT * FROM animal";
+        
+        // Consulta SQL
+        $sql = "SELECT a.id, a.nome_animal, a.especie, a.raca, a.data_nascimento, a.idade, a.castrado, p.nome
+                FROM animal a 
+                LEFT JOIN pessoa p ON a.id_pessoa = p.id";
 
         // Executa a consulta
         $result = mysqli_query($con, $sql);
@@ -18,7 +22,7 @@
 
     <div class="container">
         <h1>Consulta de Animais</h1>
-        <a href="CadastroAnimal.html">Cadastrar novo Animal</a><br>
+        <a href="CadastroAnimal.php">Cadastrar novo Animal</a><br>
         <a href="../index.html">Voltar para a Tela Inicial</a>
 
         <table class="n-table">
@@ -30,7 +34,7 @@
                 <th>Data de Nascimento</th>
                 <th>Idade</th>
                 <th>Castrado</th>
-                <th>Id_pessoa</th>
+                <th>Dono</th>
                 <th>Alterar</th>
                 <th>Deletar</th>
             </tr>
@@ -39,13 +43,13 @@
                     $castrado = $row['castrado'] == 1 ? "Sim" : "Não";
                     echo "<tr>";
                     echo "<td>".$row['id']."</td>";
-                    echo "<td>".$row['nome']."</td>";
+                    echo "<td>".$row['nome_animal']."</td>";
                     echo "<td>".$row['especie']."</td>";
                     echo "<td>".$row['raca']."</td>";
                     echo "<td>".$row['data_nascimento']."</td>";
                     echo "<td>".$row['idade']."</td>";
-                    echo "<td>".$castrado."</td>";
-                    echo "<td>".$row['id_pessoa']."</td>";
+                    echo "<td>".$castrado."</td>";    
+                    echo "<td>".$row['nome']."</td>";                
                     echo "<td><a href='alteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
                     echo "<td><a href='deletaPessoa.php?id=".$row['id']."'>Deletar</a></td>";
                     echo "</tr>";

@@ -10,7 +10,7 @@
 <body>
     <?php
         include('../Includes/conexao.php');
-        
+
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $endereco = $_POST['endereco'];
@@ -41,6 +41,6 @@
         }
     ?>
     <h3>Ver na <a href="ListarPessoa.php">Tabela</a></h3>
-    <h3><a href="CadastroPessoa.html">Voltar</a></h3>
+    <h3><a href="CadastroPessoa.php">Voltar</a></h3>
 </body>
 </html>
