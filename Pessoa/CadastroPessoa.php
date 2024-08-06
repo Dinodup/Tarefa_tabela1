@@ -32,8 +32,8 @@
             </div><p></p>
 
             <div>
-                <label for="id_cidade">Id da Cidade: </label>
-                <select name="id_cidade" id="id_cidade">
+                <label for="id">Id da Cidade: </label>
+                <select name="id" id="id">
                 <?php
                 include('../Includes/conexao.php');
                 $sql = "SELECT * FROM cidade";

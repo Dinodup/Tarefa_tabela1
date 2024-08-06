@@ -10,26 +10,24 @@
 <body>
     <?php
         include('../Includes/conexao.php');
+        
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $endereco = $_POST['endereco'];
         $bairro = $_POST['bairro'];
         $cep = $_POST['cep'];
-        $id_cidade = $_POST['id_cidade'];
-
-        echo "<h1>Dados da cidade</h1>";
-        echo "Nome: $nome<br>";
+        $id = $_POST['id'];
 
         echo "<h1>Dados da Pessoa</h1>";
         echo "Nome: $nome<br>";
         echo "Email: $email<br>";
         echo "Endereço: $endereco<br>";
         echo "Bairro: $bairro<br>";
-        echo "ID da cidade: $id_cidade<br>";
+        echo "ID da cidade: $id<br>";
         echo "CEP: $cep<br>";
 
-        $sql = "INSERT INTO pessoa (nome, email, endereco, bairro, id_cidade, cep)";
-        $sql .= " VALUES('".$nome."','".$email."','".$endereco."','".$bairro."','".$id_cidade."','".$cep."')";
+        $sql = "INSERT INTO pessoa (nome, email, endereco, bairro, id, cep)";
+        $sql .= " VALUES('".$nome."','".$email."','".$endereco."','".$bairro."','".$id."','".$cep."')";
         echo $sql;
 
         //executa comando no banco de dados

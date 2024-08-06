@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="../Styles/style2.css">
 </head>
 <body>
-<?php
+    <?php
         include('../Includes/conexao.php');
 
         // Consulta SQL
-        $sql = "SELECT id_cidade, nome_cidade, estado
-                FROM cidade";
+        $sql = "SELECT * 
+                from pessoa p
+                left join cidade c on c.id = p.id_cidade;";
 
         // Executar a consulta
         $result = mysqli_query($con, $sql);
@@ -42,12 +43,12 @@
             <?php //mysqli_fetch_array lê uma linha por vez
                 while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
-                    echo "<td>".$row['id_cidade']."</td>";
+                    echo "<td>".$row['id']."</td>";
                     echo "<td>".$row['nome']."</td>";
                     echo "<td>".$row['email']."</td>";
                     echo "<td>".$row['endereco']."</td>";
                     echo "<td>".$row['bairro']."</td>";
-                    echo "<td>".$row['nome_cidade']."</td>";
+                    echo "<td>".$row['estado']."/".$row['nome_cidade']."</td>";
                     echo "<td>".$row['cep']."</td>";
                     echo "<td><a href='alteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
                     echo "<td><a href='deletaPessoa.php?id=".$row['id']."'>Deletar</a></td>";
@@ -55,7 +56,7 @@
                 }
             ?>
         </table><p></p>
-        <a href="CadastroPessoa.html">Cadastrar nova Pessoa</a><br>
+        <a href="CadastroPessoa.php">Cadastrar nova Pessoa</a><br>
         <a href="../index.html">Voltar para a Tela Inicial</a>
     </div>
 </body>
