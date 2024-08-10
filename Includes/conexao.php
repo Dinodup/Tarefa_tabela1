@@ -1,9 +1,9 @@
 <?php
     $hostname = 'localhost';
     $username = 'root';
-    $password = '';
-    $database = 'ifsp';
-    $port     = 3308;
+    $password = 'dino2626:)'; //mudar para nulo
+    $database = 'IFSP'; //mudar para nada
+    $port     = 3308; //3307
 
     $con = mysqli_connect($hostname, $username, $password, $database, $port);
 
