@@ -88,7 +88,7 @@ a:hover {
     text-decoration: underline;
 }
 
-#id, #estado, #id_pessoa{
+#id, #estado, #id_pessoa, #email{
     width: calc(100%);
     padding: 8px;
     border: 1px solid #ddd;

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Pessoas</title>
-    <link rel="stylesheet" href="../Styles/style1.css">
+    <link rel="stylesheet" href="../Styles/style1">
 </head>
 <body>
     <form action="CadastroPessoaExe.php" method="post">
@@ -18,7 +18,7 @@
     
             <div>
                 <label for="email">Email: </label>
-                <input type="text" name="email" id="email">
+                <input type="email" name="email" id="email">
             </div><p></p>
 
             <div>
@@ -49,7 +49,7 @@
     
             <div>
                 <label for="cep">CEP: </label>
-                <input type="number" name="cep" id="cep">
+                <input type="text" name="cep" id="cep">
             </div><p></p>
     
             <div>

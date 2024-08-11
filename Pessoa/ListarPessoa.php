@@ -12,10 +12,10 @@
         include('../Includes/conexao.php');
 
         // Consulta SQL corrigida
-        $sql = "SELECT p.id, p.nome, p.email, p.endereco, p.bairro, p.cep, 
-                       c.nome AS nome_cidade, c.estado 
+        $sql = "SELECT p.id, p.nome nome, p.email, p.endereco, p.bairro, p.cep, 
+                       c.nome_cidade, c.estado 
                 FROM pessoa p
-                LEFT JOIN cidade c ON c.id = p.cidade_id;";
+                LEFT JOIN cidade c ON c.id = p.id;";
 
         // Executar a consulta
         $result = mysqli_query($con, $sql);
@@ -52,7 +52,7 @@
                     echo "<td>".$row['estado']."/".$row['nome_cidade']."</td>";
                     echo "<td>".$row['cep']."</td>";
                     echo "<td><a href='../Modificações/alteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
-                    echo "<td><a href='deletaPessoa.php?id=".$row['id']."'>Deletar</a></td>";
+                    echo "<td><a href='../Modificações/deletaPessoa.php?id=".$row['id']."'>Deletar</a></td>";
                     echo "</tr>";
                 }
             ?>

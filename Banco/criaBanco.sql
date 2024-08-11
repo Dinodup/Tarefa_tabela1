@@ -17,7 +17,7 @@ create table pessoa
     endereco varchar(50),
     bairro varchar(50),
     id int,
-    cep int(8),
+    cep varchar(10),
 	foreign key (id) references cidade(id)
 );
 
