@@ -50,6 +50,6 @@
         </div>
     </fieldset>
     </form>
-    <a href="ListarCidade.php">Voltar</a>
+    <a href="../Cidade/ListarCidade.php">Voltar</a>
 </body>
 </html>

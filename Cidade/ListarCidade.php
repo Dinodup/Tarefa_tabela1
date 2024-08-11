@@ -44,7 +44,7 @@
                     echo "<td>".$row['nome_cidade']."</td>";
                     echo "<td>".$row['estado']."</td>";
                     echo "<td><a href='../Modificações/alteraCidade.php?id=".$row['id']."'>Alterar</a></td>";
-                    echo "<td><a href='deletaCidade.php?id=".$row['id']."'>Deletar</a></td>";
+                    echo "<td><a href='../Modificações/deletaCidade.php?id=".$row['id']."'>Deletar</a></td>";
                     echo "</tr>";
                 }
             ?>

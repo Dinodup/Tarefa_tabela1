@@ -11,10 +11,11 @@
     <?php
         include('../Includes/conexao.php');
 
-        // Consulta SQL
-        $sql = "SELECT * 
-                from pessoa p
-                left join cidade c on c.id = p.id_cidade;";
+        // Consulta SQL corrigida
+        $sql = "SELECT p.id, p.nome, p.email, p.endereco, p.bairro, p.cep, 
+                       c.nome AS nome_cidade, c.estado 
+                FROM pessoa p
+                LEFT JOIN cidade c ON c.id = p.cidade_id;";
 
         // Executar a consulta
         $result = mysqli_query($con, $sql);
@@ -40,7 +41,7 @@
                 <th>Alterar</th>
                 <th>Deletar</th>
             </tr>
-            <?php //mysqli_fetch_array lê uma linha por vez
+            <?php 
                 while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
                     echo "<td>".$row['id']."</td>";

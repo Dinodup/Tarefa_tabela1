@@ -11,10 +11,10 @@
     <h1>Deletar Cidade</h1>
     <?php
         include('../Includes/conexao.php');
-        $id = $_GET['id'];
+        $id_pessoa = $_GET['id_animal'];
         $sql = "DELETE
-                FROM cidade
-                WHERE id = $id";
+                FROM animal
+                WHERE id_animal = $id_animal";
         $result = mysqli_query($con,$sql);
         if($result){
             echo "<h2>Dados deletados</h2>";
@@ -23,6 +23,6 @@
             echo "<h2>".mysqli_error($con)."</h2>";
         }
     ?>
-    <a href="../Cidade/ListarCidade.php">Voltar</a>
+    <a href="../Pessoa/ListarAnimal.php">Voltar</a>
 </body>
 </html>

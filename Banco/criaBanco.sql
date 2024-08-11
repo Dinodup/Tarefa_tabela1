@@ -16,8 +16,8 @@ create table pessoa
     email varchar(50),
     endereco varchar(50),
     bairro varchar(50),
-    cep int(8),
     id int,
+    cep int(8),
 	foreign key (id) references cidade(id)
 );
 
@@ -27,7 +27,7 @@ create table animal
 	nome_animal varchar(50),
 	especie varchar(50),
 	raca varchar(50),
-    data_nascimento int,
+    data_nascimento date,
     idade int(3),
     castrado bool,
     id_pessoa int,
