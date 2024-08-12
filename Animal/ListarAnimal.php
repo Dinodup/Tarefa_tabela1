@@ -54,8 +54,8 @@
                     echo "<td>".$row['idade']."</td>";
                     echo "<td>".$castrado."</td>";    
                     echo "<td>".$row['nome']."</td>";                
-                    echo "<td><a href='alteraPessoa.php?id=".$row['id_animal']."'>Alterar</a></td>";
-                    echo "<td><a href='../deletaPessoa.php?id=".$row['id_animal']."'>Deletar</a></td>";
+                    echo "<td><a href='../Modificações/alteraAnimal.php?id=".$row['id_animal']."'>Alterar</a></td>";
+                    echo "<td><a href='../Modificações/deletaAnimal.php?id=".$row['id_animal']."'>Deletar</a></td>";
                     echo "</tr>";
                 }
             ?>
