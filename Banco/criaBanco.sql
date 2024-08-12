@@ -26,6 +26,7 @@ CREATE TABLE animal (
   nome_animal VARCHAR(50),
   especie VARCHAR(50),
   raca VARCHAR(50),
+  idade INT(2),
   data_nascimento DATE,
   castrado BOOL,
   id_pessoa INT,
