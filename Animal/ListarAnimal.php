@@ -12,9 +12,13 @@
         include('../Includes/conexao.php');
         
         // Consulta SQL
-        $sql = "SELECT a.id, a.nome_animal, a.especie, a.raca, a.data_nascimento, a.idade, a.castrado, p.nome
+        $sql = "SELECT a.id_animal, a.nome_animal, a.especie, a.raca, a.data_nascimento, a.idade, a.castrado, p.nome
                 FROM animal a 
-                LEFT JOIN pessoa p ON a.id_pessoa = p.id";
+                LEFT JOIN pessoa p ON a.id_pessoa = p.id_pessoa";
+
+        //  $sql = "SELECT pe.a_id, pe.a_nome, pe.a_especie, pe.a_raça, pe.a_datan, pe.a_idade, pe.a_castrado, ci.p_nome
+        //         FROM animal pe 
+        //         LEFT JOIN pessoa ci ON pe.p_id = ci.p_id";
 
         // Executa a consulta
         $result = mysqli_query($con, $sql);
@@ -42,7 +46,7 @@
                 while($row = mysqli_fetch_array($result)){
                     $castrado = $row['castrado'] == 1 ? "Sim" : "Não";
                     echo "<tr>";
-                    echo "<td>".$row['id']."</td>";
+                    echo "<td>".$row['id_animal']."</td>";
                     echo "<td>".$row['nome_animal']."</td>";
                     echo "<td>".$row['especie']."</td>";
                     echo "<td>".$row['raca']."</td>";
@@ -50,8 +54,8 @@
                     echo "<td>".$row['idade']."</td>";
                     echo "<td>".$castrado."</td>";    
                     echo "<td>".$row['nome']."</td>";                
-                    echo "<td><a href='alteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
-                    echo "<td><a href='deletaPessoa.php?id=".$row['id']."'>Deletar</a></td>";
+                    echo "<td><a href='alteraPessoa.php?id=".$row['id_animal']."'>Alterar</a></td>";
+                    echo "<td><a href='../deletaPessoa.php?id=".$row['id_animal']."'>Deletar</a></td>";
                     echo "</tr>";
                 }
             ?>

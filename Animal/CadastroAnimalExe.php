@@ -37,7 +37,7 @@
         echo "Id da Pessoa: $id_pessoa<br>";
 
         $sql = "INSERT INTO animal (nome_animal, especie, raca, data_nascimento, idade, castrado, id_pessoa)";
-        $sql .= " VALUES('".$nome_animal."','".$especie."','".$raca."','".$data_nascimento."','".$idade."','".$castrado."','".$id_pessoa."')";
+        $sql .= " VALUES('".$nome_animal."','".$especie."','".$raca."','".$data_nascimento."','".$idade."','".$castrado."',".$id_pessoa.")";
         echo $sql;
 
         //executa comando no banco de dados

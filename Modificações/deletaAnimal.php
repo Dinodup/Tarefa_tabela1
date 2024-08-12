@@ -16,7 +16,7 @@
         // Proteção contra SQL Injection (previne que caracteres especiais em uma entrada do usuário sejam interpretados como parte da instrução SQL)
         $id = mysqli_real_escape_string($con, $id);
 
-        $sql = "DELETE FROM animal WHERE id = $id";
+        $sql = "DELETE FROM animal WHERE id_animal = $id";
         $result = mysqli_query($con, $sql);
 
         if ($result) {
@@ -26,6 +26,6 @@
             echo "<h2>" . mysqli_error($con) . "</h2>";
         }
     ?>
-    <a href="../Pessoa/ListarAnimal.php">Voltar para a lista de Animais</a>
+    <a href="../Animal/ListarAnimal.php">Voltar para a lista de Animais</a>
 </body>
 </html>

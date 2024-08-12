@@ -23,15 +23,15 @@
                     <input type="text" name="nome" id="name">
                 </div>
                 <div>
-                    <label for="email">Email da Pessoa</label>
+                    <label for="email">Email</label>
                     <input type="email" name="email" id="email">
                 </div>
                 <div>
-                    <label for="endereco">Endereço da Pessoa</label>
+                    <label for="endereco">Endereço</label>
                     <input type="text" name="endereco" id="endereco">
                 </div>
                 <div>
-                    <label for="bairro">Bairro da Pessoa</label>
+                    <label for="bairro">Bairro</label>
                     <input type="text" name="bairro" id="bairro">
                 </div>
                 <input type="hidden" name="id" value="<?php echo $row['id']?>">

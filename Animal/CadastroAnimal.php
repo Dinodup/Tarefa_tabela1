@@ -30,11 +30,6 @@
                 <label for="data_nascimento">Data do Nasciment: </label>
                 <input type="date" name="data_nascimento" id="data_nascimento">
             </div><p></p>
-
-            <div>
-                <label for="idade">Idade: </label>
-                <input type="number" name="idade" id="idade">
-            </div><p></p>
     
             <h3>Situação</h3>
         <div id="castrado">

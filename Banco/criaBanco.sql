@@ -21,17 +21,14 @@ create table pessoa
 	foreign key (id) references cidade(id)
 );
 
-create table animal
-(
-	id_animal int primary key auto_increment,
-	nome_animal varchar(50),
-	especie varchar(50),
-	raca varchar(50),
-    data_nascimento date,
-    idade int(3),
-    castrado bool,
-    id_pessoa int,
-	foreign key (id_pessoa) references pessoa(id_pessoa)
-	/*constraint fk_ClienteCidade foreign key(id_cidade) references cidade(id)*/
+CREATE TABLE animal (
+  id_animal INT PRIMARY KEY AUTO_INCREMENT,
+  nome_animal VARCHAR(50),
+  especie VARCHAR(50),
+  raca VARCHAR(50),
+  data_nascimento DATE,
+  castrado BOOL,
+  id_pessoa INT,
+  FOREIGN KEY (id_pessoa) REFERENCES pessoa(id_pessoa)
+  -- A constraint comentada foi deixada como está, pois não é relevante para o problema atual
 );
-
