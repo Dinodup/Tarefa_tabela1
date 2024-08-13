@@ -1,23 +1,28 @@
-create database IFSP;
+-- Deleta o banco de dados caso exista
+DROP DATABASE IF EXISTS IFSP;
+
+-- Cria banco de dados caso não exista
+CREATE DATABASE IF NOT EXISTS IFSP;
+
 use IFSP;
 
 create table cidade
 (	
 	id int auto_increment,
 	nome_cidade varchar(50),
-    estado varchar(50),
-    primary key (id)
+  estado varchar(50),
+  primary key (id)
 );
 
 create table pessoa
 (
 	id_pessoa int primary key auto_increment,
 	nome varchar(50),
-    email varchar(50),
-    endereco varchar(50),
-    bairro varchar(50),
-    id int,
-    cep varchar(10),
+  email varchar(50),
+  endereco varchar(50),
+  bairro varchar(50),
+  id int,
+  cep varchar(10),
 	foreign key (id) references cidade(id)
 );
 
@@ -26,10 +31,9 @@ CREATE TABLE animal (
   nome_animal VARCHAR(50),
   especie VARCHAR(50),
   raca VARCHAR(50),
-  idade INT(2),
   data_nascimento DATE,
   castrado BOOL,
   id_pessoa INT,
-  FOREIGN KEY (id_pessoa) REFERENCES pessoa(id_pessoa)
+  FOREIGN KEY (id_pessoa) REFERENCES pessoa(id)
   -- A constraint comentada foi deixada como está, pois não é relevante para o problema atual
 );

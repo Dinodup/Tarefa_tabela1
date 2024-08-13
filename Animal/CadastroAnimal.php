@@ -27,7 +27,7 @@
             </div><p></p>
     
             <div>
-                <label for="data_nascimento">Data do Nasciment: </label>
+                <label for="data_nascimento">Data do Nascimento: </label>
                 <input type="date" name="data_nascimento" id="data_nascimento">
             </div><p></p>
     

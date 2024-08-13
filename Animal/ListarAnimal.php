@@ -8,58 +8,53 @@
     <link rel="stylesheet" href="../Styles/style2.css">
 </head>
 <body>
-    <?php
-        include('../Includes/conexao.php');
-        
-        // Consulta SQL
-        $sql = "SELECT a.id_animal, a.nome_animal, a.especie, a.raca, a.data_nascimento, a.idade, a.castrado, p.nome
-                FROM animal a 
-                LEFT JOIN pessoa p ON a.id_pessoa = p.id_pessoa";
-
-        //  $sql = "SELECT pe.a_id, pe.a_nome, pe.a_especie, pe.a_raça, pe.a_datan, pe.a_idade, pe.a_castrado, ci.p_nome
-        //         FROM animal pe 
-        //         LEFT JOIN pessoa ci ON pe.p_id = ci.p_id";
-
-        // Executa a consulta
-        $result = mysqli_query($con, $sql);
-    ?>
 
     <div class="container">
         <h1>Consulta de Animais</h1>
         <a href="CadastroAnimal.php">Cadastrar novo Animal</a><br>
         <a href="../index.html">Voltar para a Tela Inicial</a>
 
-        <table class="n-table">
-            <tr>
-                <th>id</th>
-                <th>Nome</th>
-                <th>Espécie</th>
-                <th>Raça</th>
-                <th>Data de Nascimento</th>
-                <th>Idade</th>
-                <th>Castrado</th>
-                <th>Dono</th>
-                <th>Alterar</th>
-                <th>Deletar</th>
-            </tr>
-            <?php //mysqli_fetch_array lê uma linha por vez
-                while($row = mysqli_fetch_array($result)){
-                    $castrado = $row['castrado'] == 1 ? "Sim" : "Não";
-                    echo "<tr>";
-                    echo "<td>".$row['id_animal']."</td>";
-                    echo "<td>".$row['nome_animal']."</td>";
-                    echo "<td>".$row['especie']."</td>";
-                    echo "<td>".$row['raca']."</td>";
-                    echo "<td>".$row['data_nascimento']."</td>";
-                    echo "<td>".$row['idade']."</td>";
-                    echo "<td>".$castrado."</td>";    
-                    echo "<td>".$row['nome']."</td>";                
-                    echo "<td><a href='../Modificações/alteraAnimal.php?id=".$row['id_animal']."'>Alterar</a></td>";
-                    echo "<td><a href='../Modificações/deletaAnimal.php?id=".$row['id_animal']."'>Deletar</a></td>";
-                    echo "</tr>";
-                }
-            ?>
-        </table>
+        <?php
+            include('../Includes/conexao.php');
+
+            // Consulta SQL corrigida para garantir que o nome do dono seja recuperado corretamente
+            $sql = "SELECT a.id_animal, a.nome_animal, a.especie, a.raca, a.data_nascimento, 
+                           a.castrado, a.id_pessoa, p.nome AS nome_dono 
+                    FROM animal a
+                    LEFT JOIN pessoa p ON p.id_pessoa = a.id_pessoa;";
+
+            // Executar a consulta
+            $result = mysqli_query($con, $sql);
+
+            // Verificar se a consulta foi bem-sucedida
+            if (!$result) {
+                die('Erro na consulta: ' . mysqli_error($con));
+            }
+
+            echo "<table class='n-table'>";
+            echo "<tr><th>ID</th><th>Nome</th><th>Espécie</th><th>Raça</th><th>Data de Nascimento</th><th>Idade</th><th>Castrado</th><th>ID Pessoa</th><th>Dono</th><th>Alterar</th><th>Deletar</th></tr>";
+
+            while($row = mysqli_fetch_array($result)){
+                $data_nasc = new DateTime($row['data_nascimento']);
+                $data_atual = new DateTime();
+                $idade = $data_atual->diff($data_nasc)->y;
+
+                echo "<tr>";
+                echo "<td>".$row['id_animal']."</td>";
+                echo "<td>".$row['nome_animal']."</td>";
+                echo "<td>".$row['especie']."</td>";
+                echo "<td>".$row['raca']."</td>";
+                echo "<td>".$row['data_nascimento']."</td>";
+                echo "<td>".$idade." anos</td>";
+                echo "<td>".($row['castrado'] ? 'Sim' : 'Não')."</td>";
+                echo "<td>".$row['id_pessoa']."</td>";
+                echo "<td>".$row['nome_dono']."</td>"; // Alterado para exibir o nome do dono
+                echo "<td><a href='../Modificações/alteraAnimal.php?id_animal=".$row['id_animal']."'>Alterar</a></td>";
+                echo "<td><a href='../Modificações/deletaAnimal.php?id_animal=".$row['id_animal']."'>Deletar</a></td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        ?>
     </div>
 </body>
 </html>
