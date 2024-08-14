@@ -11,16 +11,13 @@
     <?php
         include('../Includes/conexao.php');
 
-        // Consulta SQL corrigida
-        $sql = "SELECT p.id, p.nome nome, p.email, p.endereco, p.bairro, p.cep, 
+        $sql = "SELECT p.id_pessoa, p.nome, p.email, p.endereco, p.bairro, p.cep, 
                        c.nome_cidade, c.estado 
                 FROM pessoa p
-                LEFT JOIN cidade c ON c.id = p.id;";
+                LEFT JOIN cidade c ON c.id = p.id_cidade;";
 
-        // Executar a consulta
         $result = mysqli_query($con, $sql);
 
-        // Verificar se a consulta foi bem-sucedida
         if (!$result) {
             die('Erro na consulta: ' . mysqli_error($con));
         }
@@ -31,7 +28,7 @@
 
         <table class="n-table">
             <tr>
-                <th>id</th>
+                <th>ID Pessoa</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Endereço</th>
@@ -44,15 +41,15 @@
             <?php 
                 while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
-                    echo "<td>".$row['id']."</td>";
+                    echo "<td>".$row['id_pessoa']."</td>";
                     echo "<td>".$row['nome']."</td>";
                     echo "<td>".$row['email']."</td>";
                     echo "<td>".$row['endereco']."</td>";
                     echo "<td>".$row['bairro']."</td>";
                     echo "<td>".$row['estado']."/".$row['nome_cidade']."</td>";
                     echo "<td>".$row['cep']."</td>";
-                    echo "<td><a href='../Modificações/alteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
-                    echo "<td><a href='../Modificações/deletaPessoa.php?id=".$row['id']."'>Deletar</a></td>";
+                    echo "<td><a href='../Modificações/alteraPessoa.php?id=".$row['id_pessoa']."'>Alterar</a></td>";
+                    echo "<td><a href='../Modificações/deletaPessoa.php?id=".$row['id_pessoa']."'>Deletar</a></td>";
                     echo "</tr>";
                 }
             ?>

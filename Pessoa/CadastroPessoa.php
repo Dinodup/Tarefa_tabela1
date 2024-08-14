@@ -15,7 +15,7 @@
                 <label for="nome">Nome: </label>
                 <input type="text" name="nome" id="nome">
             </div><p></p>
-    
+
             <div>
                 <label for="email">Email: </label>
                 <input type="email" name="email" id="email">
@@ -25,33 +25,33 @@
                 <label for="endereco">Endereço: </label>
                 <input type="text" name="endereco" id="endereco">
             </div><p></p>
-    
+
             <div>
                 <label for="bairro">Bairro: </label>
                 <input type="text" name="bairro" id="bairro">
             </div><p></p>
 
             <div>
-                <label for="id">Id da Cidade: </label>
-                <select name="id" id="id">
+                <label for="id_cidade">Id da Cidade: </label>
+                <select name="id_cidade" id="id_cidade">
                 <?php
                 include('../Includes/conexao.php');
                 $sql = "SELECT * FROM cidade";
                 $result = mysqli_query($con,$sql);
                 while($row = mysqli_fetch_array($result)){
-                    echo "<br><option value='".$row['id']."'>"
+                    echo "<option value='".$row['id']."'>"
                          .$row['nome_cidade']."/".$row['estado']
                          ."</option>";
                 }
                 ?>
                 </select>
             </div><p></p>
-    
+
             <div>
                 <label for="cep">CEP: </label>
                 <input type="text" name="cep" id="cep">
             </div><p></p>
-    
+
             <div>
                 <button type="submit">Cadastrar</button>
             </div>
