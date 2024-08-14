@@ -17,22 +17,19 @@
         <?php
             include('../Includes/conexao.php');
 
-            // Consulta SQL corrigida para garantir que o nome do dono seja recuperado corretamente
             $sql = "SELECT a.id_animal, a.nome_animal, a.especie, a.raca, a.data_nascimento, 
                            a.castrado, a.id_pessoa, p.nome AS nome_dono 
                     FROM animal a
                     LEFT JOIN pessoa p ON p.id_pessoa = a.id_pessoa;";
 
-            // Executar a consulta
             $result = mysqli_query($con, $sql);
 
-            // Verificar se a consulta foi bem-sucedida
             if (!$result) {
                 die('Erro na consulta: ' . mysqli_error($con));
             }
 
             echo "<table class='n-table'>";
-            echo "<tr><th>ID</th><th>Nome</th><th>Espécie</th><th>Raça</th><th>Data de Nascimento</th><th>Idade</th><th>Castrado</th><th>ID Pessoa</th><th>Dono</th><th>Alterar</th><th>Deletar</th></tr>";
+            echo "<tr><th>ID</th><th>Nome</th><th>Espécie</th><th>Raça</th><th>Data de Nascimento</th><th>Idade</th><th>Castrado</th><th>Dono</th><th>Alterar</th><th>Deletar</th></tr>";
 
             while($row = mysqli_fetch_array($result)){
                 $data_nasc = new DateTime($row['data_nascimento']);
@@ -47,8 +44,7 @@
                 echo "<td>".$row['data_nascimento']."</td>";
                 echo "<td>".$idade." anos</td>";
                 echo "<td>".($row['castrado'] ? 'Sim' : 'Não')."</td>";
-                echo "<td>".$row['id_pessoa']."</td>";
-                echo "<td>".$row['nome_dono']."</td>"; // Alterado para exibir o nome do dono
+                echo "<td>".$row['nome_dono']."</td>";
                 echo "<td><a href='../Modificações/alteraAnimal.php?id_animal=".$row['id_animal']."'>Alterar</a></td>";
                 echo "<td><a href='../Modificações/deletaAnimal.php?id_animal=".$row['id_animal']."'>Deletar</a></td>";
                 echo "</tr>";
